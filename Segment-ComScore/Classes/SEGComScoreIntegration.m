@@ -21,10 +21,16 @@
         SEGLog(@"[CSComScore setAppContext]");
         [self.comScoreClass setCustomerC2:[self customerC2]];
         SEGLog(@"[CSComScore setCustomerC2: %@]", [self customerC2]);
-        [self.comScoreClass setPublisherSecret:[self publisherSecret]];
-        SEGLog(@"[CSComScore setPublisherSecret: %@]", [self publisherSecret]);
-        [self.comScoreClass setAppName: [self appName]];
-        SEGLog(@"[CSComScore setAppName: %@]", [self appName]);
+        
+        if ([self publisherSecret]) {
+            [self.comScoreClass setPublisherSecret:[self publisherSecret]];
+            SEGLog(@"[CSComScore setPublisherSecret: %@]", [self publisherSecret]);
+        }
+        if ([self appName]) {
+            [self.comScoreClass setAppName: [self appName]];
+            SEGLog(@"[CSComScore setAppName: %@]", [self appName]);
+        }
+        
         [self.comScoreClass setSecure: [self useHTTPS]];
         SEGLog(@"[CSComScore setSecure: %@]", [self useHTTPS]);
         if ([self autoUpdate]) {
